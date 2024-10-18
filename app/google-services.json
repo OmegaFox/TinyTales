@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "886938242431",
+    "firebase_url": "https://tinytales-243a7-default-rtdb.firebaseio.com",
+    "project_id": "tinytales-243a7",
+    "storage_bucket": "tinytales-243a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886938242431:android:732ebf149712a6e0551e4a",
+        "android_client_info": {
+          "package_name": "com.example.bookapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKITZUIhIlhmN8qJv3qwcKtoiqafuQZjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886938242431:android:c4376d472d87d93c551e4a",
+        "android_client_info": {
+          "package_name": "com.example.tinytales"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKITZUIhIlhmN8qJv3qwcKtoiqafuQZjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

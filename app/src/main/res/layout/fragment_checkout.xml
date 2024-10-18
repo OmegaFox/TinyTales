@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText"
+    tools:context=".CheckoutFragment">
+
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TitleCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkout"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TitleCheckout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/AddressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"/>
+
+            <Button
+                android:id="@+id/changeAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:text="Change">
+            </Button>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addNewAddress"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutAddress"
+            android:text="Add a New Delivery Address">
+        </Button>
+
+        <TextView
+            android:id="@+id/TitlePayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Payment Methotd"
+            android:layout_below="@id/addNewAddress"
+            android:textSize="24sp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TitlePayment"
+            >
+
+            <RadioButton
+                android:layout_marginBottom="20dp"
+                android:id="@+id/radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CreditCard"
+                android:padding="15dp"
+                android:textSize="16sp"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Cash on Delivery"
+                android:textSize="16sp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:text="Pay">
+        </Button>
+    </RelativeLayout>
+</FrameLayout>

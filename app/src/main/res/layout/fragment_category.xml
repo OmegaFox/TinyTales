@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".CategoryFragment"
+    tools:ignore="HardcodedText"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+        <LinearLayout
+            android:id="@+id/layoutSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/searchET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:drawableStart="@drawable/search"
+                android:layout_weight="1"
+                android:hint="Search title / Author / Category"
+                >
+            </EditText>
+
+            <ImageButton
+                android:contentDescription="Filter"
+                android:id="@+id/filterButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:src="@drawable/filter_list">
+            </ImageButton>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/titleCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="16sp"
+            android:text="Category"
+            android:layout_below="@+id/layoutSearch">
+        </TextView>
+
+
+        <LinearLayout
+            android:id="@+id/layoutCategoryRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/titleCategory"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/FictionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Fiction">
+            </Button>
+
+            <Button
+                android:id="@+id/ClassicButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Classic">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutCategoryRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutCategoryRow1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/HorrorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Horror">
+            </Button>
+
+            <Button
+                android:id="@+id/FantasyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Fantasy">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutCategoryRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutCategoryRow2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/DramaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Drama">
+            </Button>
+
+            <Button
+                android:id="@+id/ScienceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Science">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutCategoryRow4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutCategoryRow3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/MangaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Manga">
+            </Button>
+
+            <Button
+                android:id="@+id/SciFiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Sci-fi">
+            </Button>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditUserFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/titleAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Account"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/profilePicture"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/titleAccount"
+            android:layout_centerInParent="true"
+            android:src="@drawable/account"/>
+
+        <TextView
+            android:id="@+id/NameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:layout_below="@id/profilePicture"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/emailTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:layout_below="@+id/NameTV"
+            android:text="Email Address" />
+
+        <LinearLayout
+            android:id="@+id/changePasswordLayout"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailTV"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/passwordTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:text="Password" />
+            <Button
+                android:id="@+id/changePasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Change">
+            </Button>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/PhoneTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:layout_below="@+id/changePasswordLayout"
+            android:text="Phone number" />
+
+        <TextView
+            android:id="@+id/AddressTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:layout_below="@id/PhoneTV"
+            android:text="Address" />
+
+        <LinearLayout
+            android:id="@+id/editProfileLayout"
+            android:layout_below="@id/AddressTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Save">
+            </Button>
+
+            <Button
+                android:id="@+id/userDeliveryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Discard">
+            </Button>
+        </LinearLayout>
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editProfileLayout"
+            android:text="Logout">
+        </Button>
+    </RelativeLayout>
+
+</FrameLayout>
