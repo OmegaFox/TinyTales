@@ -4,6 +4,7 @@
     android:layout_height="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginEnd="15dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="0dp"
     app:contentPadding="5dp"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-
+                android:id="@+id/imageBook"
                 android:layout_width="100dp"
                 android:layout_height="140dp"
                 android:contentDescription="ImageBook"
@@ -51,23 +52,23 @@
         </TextView>
 
         <TextView
-            android:id="@+id/artisBook"
+            android:id="@+id/authorBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@id/titleBook"
-            android:text="Artis">
+            android:text="Author">
         </TextView>
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/priceBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textSize="24sp"
-            android:layout_below="@id/artisBook"
+            android:layout_below="@id/authorBook"
             android:text="Price">
         </TextView>
     </RelativeLayout>

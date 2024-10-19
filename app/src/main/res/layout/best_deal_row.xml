@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="250dp"
     android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="HardcodedText"
+    android:layout_marginEnd="15dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="0dp"
     app:contentPadding="5dp">
@@ -14,7 +15,7 @@
 
         <ImageView
             android:contentDescription="ImageBook"
-            android:id="@+id/ImageBook"
+            android:id="@+id/imageBook"
             android:layout_width="100dp"
             android:layout_height="140dp">
         </ImageView>
@@ -23,8 +24,9 @@
             android:id="@+id/titleBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/ImageBook"
+            android:layout_toEndOf="@+id/imageBook"
             android:text="Title">
         </TextView>
 
@@ -32,16 +34,18 @@
             android:id="@+id/categoryBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/ImageBook"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imageBook"
             android:layout_below="@+id/titleBook"
             android:text="Category">
         </TextView>
 
         <TextView
-            android:id="@+id/descriptionBook"
+            android:id="@+id/authorBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/ImageBook"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imageBook"
             android:layout_below="@+id/categoryBook"
             android:text="description"
             />
@@ -50,10 +54,10 @@
             android:id="@+id/priceBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/ImageBook"
+            android:layout_toEndOf="@+id/imageBook"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="130dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="130dp"
             android:text="price"
             android:maxLines="1"
         />

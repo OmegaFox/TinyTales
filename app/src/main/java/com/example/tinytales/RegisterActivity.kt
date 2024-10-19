@@ -5,13 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.tinytales.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
     //process dialog
@@ -30,6 +29,10 @@ class RegisterActivity : AppCompatActivity() {
 
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
+
+        // firestore
+        val db = FirebaseFirestore.getInstance()
+        val usersCollection = db.collection("users")
 
         // init process dialog, will show while create account | register user
         progressDialog = ProgressDialog(this)
@@ -101,41 +104,21 @@ class RegisterActivity : AppCompatActivity() {
         //4. Luu du lieu - Firebase Realtime Database
         progressDialog.setMessage("Saving user info....")
 
-        // timestamp
-        val timestamp = System.currentTimeMillis()
+        val user = User(
+            email = binding.emailET.text.toString().trim(),
+            phone = binding.phoneET.text.toString().trim(),
+            password = binding.passwordET.text.toString().trim()
+        )
 
-        val uid = firebaseAuth.uid
-
-        if (uid == null) {
-            progressDialog.dismiss()
-            Toast.makeText(this, "UID is null, cannot save user info", Toast.LENGTH_SHORT).show()
-        }
-
-        // tao hashmap de luu du lieu
-        val hashMap: HashMap<String, Any?> = HashMap()
-        hashMap["uid"] = uid
-        hashMap["email"] = email
-        hashMap["phone"] = phone
-        hashMap["name"] = ""
-        hashMap["profileImage"] = ""
-        hashMap["userType"] = "user"
-        hashMap["timestamp"] = timestamp
-
-        //luu du lieu
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(uid!!)
-            .setValue(hashMap)
-            .addOnSuccessListener {
-                // thanh cong
-                progressDialog.dismiss()
-                Toast.makeText(this, "Account created....", Toast.LENGTH_SHORT).show()
+        val db = Firebase.firestore
+        db.collection("User")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
                 startActivity(Intent(this@RegisterActivity, DashbroadUserActivity::class.java))
                 finish()
             }
             .addOnFailureListener { e ->
-                progressDialog.dismiss()
-                Toast.makeText(this, "Failed saving user info due to ${e.message}", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Error adding user: ${e.message}", Toast.LENGTH_SHORT).show()
             }
 
     }

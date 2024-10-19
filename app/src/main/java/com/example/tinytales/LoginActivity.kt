@@ -5,16 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.tinytales.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,15 +34,14 @@ class LoginActivity : AppCompatActivity() {
         // init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // firestore
+        val db = FirebaseFirestore.getInstance()
+        val usersCollection = db.collection("users")
+
         // init progress dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
-
-//        // handle click, open register activity
-//        binding.noAccountTv.setOnClickListener {
-//            startActivity(Intent(this, RegisterActivity::class.java))
-//        }
 
         binding.registerTV.setOnClickListener{
             startActivity(Intent(this, RegisterActivity::class.java))
