@@ -21,6 +21,8 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:textSize="24sp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:layout_centerHorizontal="true"
         />
 
@@ -45,6 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/scrollItemCart"
             android:text="Order Summary"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:textSize="24sp">
         </TextView>
 
@@ -55,11 +59,14 @@
             android:layout_marginTop="10dp"
             android:layout_below="@+id/textTotalPrice"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/textSubPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Subtotal"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="16sp">
             </TextView>
@@ -71,6 +78,8 @@
                 android:text="price"
                 android:textSize="16sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
                 android:gravity="end">
             </TextView>
         </LinearLayout>
@@ -88,6 +97,8 @@
                 android:layout_height="wrap_content"
                 android:text="Shipping"
                 android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
                 android:textSize="16sp">
             </TextView>
 
@@ -98,6 +109,8 @@
                 android:text="price"
                 android:textSize="16sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
                 android:gravity="end">
             </TextView>
         </LinearLayout>
@@ -123,6 +136,8 @@
                 android:layout_height="wrap_content"
                 android:text="Total"
                 android:layout_weight="1"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
                 android:textSize="24sp">
             </TextView>
 
@@ -133,6 +148,8 @@
                 android:text="price"
                 android:textSize="24sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
                 android:gravity="end">
             </TextView>
         </LinearLayout>
@@ -141,9 +158,13 @@
             android:id="@+id/checkout"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:text="Proceed to Checkout">
+            android:background="@drawable/background_button"
+            android:text="Proceed to Checkout"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans_semibold">
         </Button>
     </RelativeLayout>
 

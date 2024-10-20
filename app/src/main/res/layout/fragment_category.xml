@@ -10,33 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp">
-        <LinearLayout
-            android:id="@+id/layoutSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/searchET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:drawableStart="@drawable/search"
-                android:layout_weight="1"
-                android:hint="Search title / Author / Category"
-                >
-            </EditText>
-
-            <ImageButton
-                android:contentDescription="Filter"
-                android:id="@+id/filterButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_weight="2"
-                android:src="@drawable/filter_list">
-            </ImageButton>
-        </LinearLayout>
 
         <TextView
             android:id="@+id/titleCategory"
@@ -44,8 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textSize="16sp"
-            android:text="Category"
-            android:layout_below="@+id/layoutSearch">
+            android:text="Category">
         </TextView>
 
 

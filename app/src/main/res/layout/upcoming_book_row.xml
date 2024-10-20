@@ -5,26 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginEnd="15dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:contentPadding="5dp"
     tools:ignore="HardcodedText">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        >
 
         <RelativeLayout
             android:id="@+id/imageBooklayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#BDBDBD">
             <ImageView
                 android:id="@+id/imageBook"
                 android:layout_width="100dp"
                 android:layout_height="140dp"
                 android:contentDescription="ImageBook"
                 android:layout_centerInParent="true"
-                android:background="@color/black"
                 >
             </ImageView>
         </RelativeLayout>
@@ -38,6 +39,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@id/imageBooklayout"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:fontFamily="@font/open_sans"
             android:text="Category">
         </TextView>
 
@@ -45,9 +49,13 @@
             android:id="@+id/titleBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@id/categoryBook"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/open_sans"
             android:text="Title">
         </TextView>
 
@@ -55,21 +63,27 @@
             android:id="@+id/authorBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@id/titleBook"
-            android:text="Author">
+            android:text="Author"
+            android:textColor="@color/white"
+            android:fontFamily="@font/open_sans">
         </TextView>
 
         <TextView
             android:id="@+id/priceBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textSize="24sp"
             android:layout_below="@id/authorBook"
-            android:text="Price">
+            android:text="Price"
+            android:textColor="@color/white"
+            android:fontFamily="@font/open_sans">
         </TextView>
     </RelativeLayout>
 

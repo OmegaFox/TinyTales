@@ -18,11 +18,29 @@ class DashbroadUserActivity : AppCompatActivity() {
         binding = ActivityDashbroadUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Kiểm tra nếu có extra được truyền từ BookDetailActivity
+        val openCart = intent.getBooleanExtra("open_cart", false)
+
+
+
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.frame_dashbroad, HomeFragment())
             commit()
         }
 
+        // Nếu open_cart là true, mở CartFragment
+        if (openCart) {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.frame_dashbroad, CartFragment())
+                commit()
+            }
+        } else {
+            // Mặc định mở HomeFragment nếu không có yêu cầu mở CartFragment
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.frame_dashbroad, HomeFragment())
+                commit()
+            }
+        }
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){

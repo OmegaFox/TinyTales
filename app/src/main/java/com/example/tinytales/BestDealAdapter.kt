@@ -1,5 +1,6 @@
 package com.example.tinytales
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.tinytales.databinding.BestDealRowBinding
 class BestDealAdapter(private val books: List<Book>) : RecyclerView.Adapter<BestDealAdapter.BookViewHolder>() {
 
     class BookViewHolder(private val binding: BestDealRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(book: Book) {
+        fun bind(book: Book, onItemClicked: (Book) -> Unit) {
             binding.titleBook.text = book.title
             binding.authorBook.text = book.author
             binding.categoryBook.text = book.category
@@ -22,6 +23,11 @@ class BestDealAdapter(private val books: List<Book>) : RecyclerView.Adapter<Best
             Glide.with(binding.imageBook.context)
                 .load(book.imageUrl)
                 .into(binding.imageBook)
+
+            // Xử lý sự kiện click
+            binding.root.setOnClickListener {
+                onItemClicked(book)
+            }
         }
     }
 
@@ -36,6 +42,18 @@ class BestDealAdapter(private val books: List<Book>) : RecyclerView.Adapter<Best
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val book = books[position]
-        holder.bind(book)
+        holder.bind(book) { selectedBook ->
+            // Chuyển dữ liệu sang BookDetailActivity khi sách được click
+            val context = holder.itemView.context
+            val intent = Intent(context, BookDetailActivity::class.java).apply {
+                putExtra("title", selectedBook.title)
+                putExtra("author", selectedBook.author)
+                putExtra("category", selectedBook.category)
+                putExtra("price", selectedBook.price)
+                putExtra("imageUrl", selectedBook.imageUrl)
+//                putExtra("description", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+            }
+            context.startActivity(intent)
+        }
     }
 }

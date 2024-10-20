@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".HomeFragment"
     tools:ignore="HardcodedText">
     <RelativeLayout
@@ -24,8 +25,10 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="9"
-                    android:text="Wellcom to Tinytales !"
-                    />
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Happy Reading!" />
 
                 <ImageButton
                     android:id="@+id/imageSearchButton"
@@ -46,7 +49,8 @@
                 android:layout_marginTop="50dp"
                 android:text="Best Deal"
                 android:textSize="24sp"
-                android:textStyle="bold"/>
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_semibold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewBestDeal"
@@ -54,6 +58,7 @@
                 android:layout_height="140dp"
                 android:layout_below="@id/titleBestDeal"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/best_deal_row"/>
@@ -63,17 +68,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recyclerViewBestDeal"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Top Book"
                 android:textSize="24sp"
-                android:textStyle="bold"/>
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_semibold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewTopBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_below="@id/titleTopBook"
+
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -84,16 +92,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recyclerViewTopBook"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Upcoming Book"
                 android:textSize="24sp"
-                android:textStyle="bold"/>
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_semibold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewUpcomingBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_below="@id/titleUpcomingBook"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"

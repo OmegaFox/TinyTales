@@ -11,37 +11,68 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/back"
+            android:background="@color/white"
+            android:padding="12dp"
+            android:contentDescription="back"/>
+
         <TextView
             android:id="@+id/TitleCheckout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Checkout"
             android:textSize="24sp"
+            android:textColor="@color/black"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/TitleAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delivering Address"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/TitleCheckout"
+            android:layout_marginTop="20dp"/>
 
         <LinearLayout
             android:id="@+id/layoutAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TitleCheckout"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/TitleAddress"
+            android:background="@drawable/conner_field"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/AddressTV"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Address"
                 android:layout_weight="1"
                 android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/open_sans"
                 android:layout_marginStart="10dp"/>
 
             <Button
                 android:id="@+id/changeAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:text="Change">
+                android:background="@drawable/background_button"
+                android:text="Change"
+                android:textColor="@color/white"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textAllCaps="false">
             </Button>
         </LinearLayout>
 
@@ -51,7 +82,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutAddress"
-            android:text="Add a New Delivery Address">
+            android:text="Add a New Delivery Address"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:background="@drawable/background_button_white">
         </Button>
 
         <TextView
@@ -59,8 +93,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Payment Methotd"
+            android:text="Payment Method"
             android:layout_below="@id/addNewAddress"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
             android:textSize="24sp"/>
 
         <RadioGroup
@@ -79,6 +115,8 @@
                 android:text="CreditCard"
                 android:padding="15dp"
                 android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans"
                 />
 
             <RadioButton
@@ -87,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:text="Cash on Delivery"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans"
                 android:textSize="16sp"/>
         </RadioGroup>
 
@@ -96,7 +136,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_alignParentBottom="true"
-            android:text="Pay">
+            android:text="Pay"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/background_button">
         </Button>
     </RelativeLayout>
 </FrameLayout>

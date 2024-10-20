@@ -4,14 +4,16 @@
     android:layout_width="250dp"
     android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/black"
     tools:ignore="HardcodedText"
     android:layout_marginEnd="15dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
     app:contentPadding="5dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ImageView
             android:contentDescription="ImageBook"
@@ -20,34 +22,45 @@
             android:layout_height="140dp">
         </ImageView>
 
-        <TextView
-            android:id="@+id/titleBook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/imageBook"
-            android:text="Title">
-        </TextView>
 
         <TextView
             android:id="@+id/categoryBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/imageBook"
-            android:layout_below="@+id/titleBook"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:textSize="10sp"
             android:text="Category">
         </TextView>
+
+
+        <TextView
+            android:id="@+id/titleBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/open_sans"
+            android:layout_toEndOf="@+id/imageBook"
+            android:layout_below="@+id/categoryBook"
+            android:textColor="@color/white"
+            android:text="Title">
+        </TextView>
+
 
         <TextView
             android:id="@+id/authorBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/imageBook"
-            android:layout_below="@+id/categoryBook"
-            android:text="description"
+            android:layout_below="@+id/titleBook"
+            android:textColor="@color/white"
+            android:text="author"
             />
 
         <TextView
@@ -59,6 +72,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="130dp"
             android:text="price"
+            android:textColor="@color/white"
             android:maxLines="1"
         />
 

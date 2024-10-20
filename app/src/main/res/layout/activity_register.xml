@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="20dp"
         android:text="Wellcome to TinyTales"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:textSize="30sp">
 
     </TextView>
@@ -23,64 +24,75 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="20dp"
         android:text="Let's create your account"
         android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_semibold"
         android:textSize="24sp">
     </TextView>
 
     <EditText
         android:id="@+id/emailET"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="300dp"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="250dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Enter your email"
         android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"
+        android:background="@drawable/edit_field_background"
         android:inputType="textEmailAddress">
     </EditText>
 
     <EditText
         android:id="@+id/passwordET"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Password"
         android:textColor="@color/black"
+        android:background="@drawable/edit_field_background"
+        android:fontFamily="@font/open_sans"
         android:inputType="textPassword">
     </EditText>
 
     <EditText
         android:id="@+id/rePasswordET"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Re-enter password"
         android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"
+        android:background="@drawable/edit_field_background"
         android:inputType="textPassword">
     </EditText>
 
     <EditText
         android:id="@+id/phoneET"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Phone number"
         android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"
+        android:background="@drawable/edit_field_background"
         android:inputType="number">
     </EditText>
 
@@ -88,12 +100,17 @@
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textAllCaps="false"
         android:text="Register"
         android:layout_gravity="center"
-        android:textColor="@color/black">
+        android:fontFamily="@font/open_sans_semibold"
+        android:background="@drawable/background_button"
+        android:textColor="@color/white">
     </Button>
 
     <TextView
@@ -104,6 +121,7 @@
         android:layout_marginRight="15dp"
         android:gravity="center"
         android:text="Already have account ? Login"
+        android:fontFamily="@font/open_sans_semibold"
         android:textColor="@color/black">
     </TextView>
 

@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:ignore="HardcodedText"
     tools:context=".PaymentReceivedActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:contentDescription="DoneImage"
+        android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/done"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+    />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
         android:text="Payment Received!"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/open_sans_semibold"
+        />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
         android:text="Your order has been validated\nThank you for shopping with us"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="close"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/close" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Done"
+        android:textColor="@color/white"
+        android:background="@drawable/background_button"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        >
+    </Button>
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoryBookActivity"
+    tools:ignore="HardcodedText">
+
+    <!-- Nút Back -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/back"
+        android:padding="12dp"/>
+
+    <!-- Category -->
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Category"
+        android:textSize="24sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/category">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/search_row">
+            </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+</RelativeLayout>

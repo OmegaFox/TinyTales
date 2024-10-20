@@ -2,25 +2,20 @@ package com.example.tinytales
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.tinytales.databinding.TopBookRowBinding
+import com.example.tinytales.databinding.SearchRowBinding
 
-class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopBooksAdapter.BookViewHolder>() {
+class CategoryBookAdapter(private var books: List<Book>) : RecyclerView.Adapter<CategoryBookAdapter.BookViewHolder>() {
 
-    class BookViewHolder(private val binding: TopBookRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(book: Book, onItemClicked: (Book) -> Unit) {
-            // Gán dữ liệu cho các view
+    class BookViewHolder(private val binding: SearchRowBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(book: Book,onItemClicked: (Book) -> Unit) {
             binding.titleBook.text = book.title
             binding.authorBook.text = book.author
-            binding.categoryBook.text = book.category
-            binding.price.text = book.price
+            binding.priceBook.text = book.price
 
-            // Sử dụng Glide để load ảnh
+            // Sử dụng Glide để tải hình ảnh từ URL
             Glide.with(binding.imageBook.context)
                 .load(book.imageUrl)
                 .into(binding.imageBook)
@@ -33,7 +28,7 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val binding = TopBookRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = SearchRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BookViewHolder(binding)
     }
 
@@ -56,5 +51,8 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
 
     override fun getItemCount(): Int = books.size
 
-
+    fun updateBooks(newBooks: List<Book>) {
+        books = newBooks
+        notifyDataSetChanged() // Cập nhật RecyclerView với danh sách mới
+    }
 }
