@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AccountFragment"
     tools:ignore="HardcodedText">
 
@@ -12,6 +13,7 @@
         android:layout_margin="20dp">
 
         <ImageButton
+            android:id="@+id/logoutButton"
             android:contentDescription="logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,59 +46,125 @@
             android:layout_centerInParent="true"
             android:src="@drawable/account"/>
 
-        <TextView
-            android:id="@+id/nameTV"
+        <LinearLayout
+            android:layout_below="@+id/profilePicture"
+            android:id="@+id/layoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:layout_below="@id/profilePicture"
-            android:text="Name"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/black"
-            android:background="@drawable/edit_field_background"/>
+            android:background="@drawable/edit_field_background"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/emailTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:layout_below="@+id/nameTV"
-            android:text="Email Address"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/black"
-            android:background="@drawable/edit_field_background"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_weight="1.75"
+                android:text="Name"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/PhoneTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:layout_below="@+id/emailTV"
-            android:text="Phone number"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/black"
-            android:background="@drawable/edit_field_background"/>
+            <TextView
+                android:id="@+id/nameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="Name"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/AddressTV"
-            style="?android:attr/buttonBarStyle"
+        <LinearLayout
+            android:id="@+id/layoutEmail"
+            android:layout_below="@+id/layoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:layout_below="@id/PhoneTV"
-            android:text="Address"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/black"
-            android:background="@drawable/edit_field_background" />
+            android:orientation="horizontal"
+            android:background="@drawable/edit_field_background" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_weight="1.75"
+                android:text="Email Address"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/emailTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:text="Email Address"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/layoutEmail"
+            android:background="@drawable/edit_field_background"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.75"
+                android:padding="15dp"
+                android:text="Phone"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/PhoneTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="Phone number"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/layoutPhone"
+            android:background="@drawable/edit_field_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.75"
+                android:padding="15dp"
+                android:text="Address"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/AddressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="Address"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/editProfileLayout"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_below="@id/AddressTV"
+            android:layout_below="@+id/layoutAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -104,9 +172,8 @@
 
             <Button
                 android:id="@+id/userProfileButton"
-
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:text="Edit Profile"
@@ -119,7 +186,7 @@
             <Button
                 android:id="@+id/userDeliveryButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:text="Your delivery"
@@ -129,7 +196,5 @@
                 android:fontFamily="@font/open_sans_semibold">
             </Button>
         </LinearLayout>
-
-
     </RelativeLayout>
 </FrameLayout>
