@@ -19,7 +19,7 @@
             android:id="@+id/imageBooklayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#BDBDBD">
+            android:background="#ECECEC">
             <ImageView
                 android:id="@+id/imageBook"
                 android:layout_width="100dp"

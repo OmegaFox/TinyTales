@@ -1,6 +1,7 @@
 package com.example.tinytales
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
             binding.authorBook.text = book.author
             binding.categoryBook.text = book.category
             binding.price.text = book.price
+
 
             // Sử dụng Glide để load ảnh
             Glide.with(binding.imageBook.context)
@@ -48,8 +50,9 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-//                putExtra("description", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
             }
+
             context.startActivity(intent)
         }
     }

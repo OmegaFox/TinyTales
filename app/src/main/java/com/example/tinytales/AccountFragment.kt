@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AccountFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class AccountFragment : Fragment(R.layout.fragment_account) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

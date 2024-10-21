@@ -81,7 +81,9 @@
         android:layout_marginStart="20dp"
         android:text="Author: "
         android:layout_toEndOf="@id/imageBook"
-        android:layout_below="@id/titleBook"/>
+        android:layout_below="@id/titleBook"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"/>
 
     <TextView
         android:id="@+id/categoryBook"
@@ -91,7 +93,9 @@
         android:layout_marginStart="20dp"
         android:text="Category: "
         android:layout_toEndOf="@id/imageBook"
-        android:layout_below="@id/authorBook"/>
+        android:layout_below="@id/authorBook"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"/>
 
     <TextView
         android:id="@+id/ratingBook"
@@ -101,7 +105,9 @@
         android:layout_marginStart="20dp"
         android:text="Rating: "
         android:layout_toEndOf="@id/imageBook"
-        android:layout_below="@id/categoryBook"/>
+        android:layout_below="@id/categoryBook"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"/>
 
     <TextView
         android:id="@+id/priceBook"
@@ -111,7 +117,9 @@
         android:layout_marginStart="20dp"
         android:text="Price: "
         android:layout_toEndOf="@id/imageBook"
-        android:layout_below="@id/ratingBook"/>
+        android:layout_below="@id/ratingBook"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans"/>
 
     <!-- Nút thêm vào giỏ hàng -->
     <Button
@@ -141,12 +149,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/descriptionBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This is the book description." />
+                android:text="This is the book description."
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans"
+                android:gravity="center"
+                android:justificationMode="inter_word"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

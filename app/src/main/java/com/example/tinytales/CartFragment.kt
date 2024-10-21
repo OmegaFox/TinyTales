@@ -2,6 +2,7 @@ package com.example.tinytales
 
 import android.os.Bundle
 import android.text.TextUtils.replace
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,7 @@ import com.example.tinytales.databinding.FragmentCartBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CartFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class CartFragment : Fragment(R.layout.fragment_cart) {
 
     private lateinit var binding: FragmentCartBinding
@@ -25,6 +22,8 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     private lateinit var auth: FirebaseAuth
 
     private lateinit var cartAdapter: CartAdapter
+
+    private var cartItems = listOf<CartItem>()
 
 
 
@@ -60,16 +59,21 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     // Truy vấn dữ liệu từ Firestore
     private fun loadCartItems() {
-        val userId = auth.currentUser?.uid ?: "Users" // Lấy userId nếu có
+        val userId = auth.currentUser?.uid ?: "guest" // Lấy userId nếu có
 
         firestore.collection("cart_items")
             .whereEqualTo("userId", userId)
             .get()
             .addOnSuccessListener { result ->
-                val cartItems = result.toObjects(CartItem::class.java)
+                cartItems = result.toObjects(CartItem::class.java)
                 // Lưu document ID cho từng item
                 cartItems.forEachIndexed { index, item ->
                     item.documentId = result.documents[index].id
+
+                    // In ra Logcat để kiểm tra dữ liệu từ Firestore
+                    for (item in cartItems) {
+                        Log.d("CartFragment", "Sách: ${item.title}, Giá: ${item.price}, Số lượng: ${item.quantity}")
+                    }
                 }
                 cartAdapter.updateCartItems(cartItems)
                 updateTotalPrice() // Tính tổng giá ban đầu
@@ -85,18 +89,14 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         firestore.collection("cart_items").document(documentId)
             .delete()
             .addOnSuccessListener {
-                // Xóa thành công, tải lại dữ liệu giỏ hàng
                 loadCartItems()
             }
-
-
             .addOnFailureListener { e ->
-                // Xử lý lỗi khi xóa thất bại
                 Toast.makeText(requireContext(), "Error removing item", Toast.LENGTH_SHORT).show()
             }
     }
 
-    private var cartItems = listOf<CartItem>()
+
     // Hàm tính tổng giá
     private fun updateTotalPrice() {
         var subtotal = 0.0
@@ -104,14 +104,12 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         for (item in cartItems) {
             subtotal += item.price.toDouble() * item.quantity
         }
-        // Phí giao hàng là 10% của subtotal
-        val shipping = subtotal * 0.10
 
+        val shipping = subtotal * 0.02
         val total = subtotal + shipping
 
-        binding.SubPrice.text = "$%.2f".format(subtotal)
-        binding.shipPrice.text = "$%.2f".format(shipping)
-        binding.TotalPrice.text = "$%.2f".format(total)
+        binding.SubPrice.text = "%.2f".format(subtotal)
+        binding.shipPrice.text = "%.2f".format(shipping)
+        binding.TotalPrice.text = "%.2f".format(total)
     }
-
 }

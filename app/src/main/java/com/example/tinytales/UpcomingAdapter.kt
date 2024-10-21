@@ -46,7 +46,7 @@ class UpcomingAdapter(private val books: List<Book>) : RecyclerView.Adapter<Upco
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-//                putExtra("description", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
             }
             context.startActivity(intent)
         }

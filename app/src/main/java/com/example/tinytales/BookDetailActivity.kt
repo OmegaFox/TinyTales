@@ -2,6 +2,8 @@ package com.example.tinytales
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,14 +35,16 @@ class BookDetailActivity : AppCompatActivity() {
         val category = intent.getStringExtra("category")
         val price = intent.getStringExtra("price")
         val imageUrl = intent.getStringExtra("imageUrl")
-        val description = intent.getStringExtra("description")
+        val description = intent.getStringExtra("descriptionBook")
+        findViewById<TextView>(R.id.descriptionBook).text = description ?: "No description available"
+
 
         // Hiển thị dữ liệu sách lên giao diện
         binding.titleBook.text = title
         binding.authorBook.text = "Author: $author"
         binding.categoryBook.text = "Category: $category"
         binding.priceBook.text = "Price: $price"
-        binding.descriptionBook.text = "Description: \n$description"
+        binding.descriptionBook.text = description
 
         // Load hình ảnh sử dụng Glide
         Glide.with(this)
@@ -86,10 +90,13 @@ class BookDetailActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 // Hiển thị thông báo khi thêm thành công
                 Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show()
+
             }
             .addOnFailureListener { e ->
                 // Xử lý lỗi
                 Toast.makeText(this,"Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 }

@@ -19,6 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/back"
+        android:background="@color/white"
         android:padding="12dp"/>
 
     <!-- Category -->
@@ -30,7 +31,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:text="Category"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textColor="@color/black"/>
 
     <ScrollView
         android:layout_width="match_parent"

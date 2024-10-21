@@ -9,7 +9,8 @@
     android:layout_marginEnd="15dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:contentPadding="5dp">
+
+>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,8 +19,8 @@
         <ImageView
             android:contentDescription="ImageBook"
             android:id="@+id/imageBook"
-            android:layout_width="100dp"
-            android:layout_height="140dp">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
         </ImageView>
 
 
@@ -65,12 +66,13 @@
 
         <TextView
             android:id="@+id/priceBook"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/imageBook"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="130dp"
+            android:layout_below="@id/authorBook"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="30dp"
             android:text="price"
             android:textColor="@color/white"
             android:maxLines="1"

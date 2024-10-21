@@ -16,8 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:gravity="center"
             android:textSize="16sp"
-            android:text="Category">
+            android:text="Category"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black">
         </TextView>
 
 
@@ -34,7 +37,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Fiction">
+                android:layout_marginEnd="10dp"
+                android:text="Fiction"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
 
             <Button
@@ -42,7 +49,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Classic">
+                android:text="Classic"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
         </LinearLayout>
 
@@ -50,15 +60,21 @@
             android:id="@+id/layoutCategoryRow2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/layoutCategoryRow1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <Button
                 android:id="@+id/HorrorButton"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Horror">
+                android:layout_marginEnd="10dp"
+                android:text="Horror"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
 
             <Button
@@ -66,7 +82,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Fantasy">
+                android:text="Fantasy"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
         </LinearLayout>
 
@@ -74,6 +93,7 @@
             android:id="@+id/layoutCategoryRow3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/layoutCategoryRow2"
             android:orientation="horizontal">
 
@@ -82,7 +102,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Drama">
+                android:layout_marginEnd="10dp"
+                android:text="Drama"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
 
             <Button
@@ -90,7 +114,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Science">
+                android:text="Science"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
         </LinearLayout>
 
@@ -98,6 +125,7 @@
             android:id="@+id/layoutCategoryRow4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/layoutCategoryRow3"
             android:orientation="horizontal">
 
@@ -106,7 +134,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Manga">
+                android:layout_marginEnd="10dp"
+                android:text="Manga"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
 
             <Button
@@ -114,7 +146,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Sci-fi">
+                android:text="Sci-fi"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:background="@drawable/background_button_white">
             </Button>
         </LinearLayout>
     </RelativeLayout>

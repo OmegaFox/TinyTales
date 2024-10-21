@@ -9,20 +9,34 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp">
+        android:layout_margin="20dp">
+
+        <ImageButton
+            android:contentDescription="logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/logout"
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/titleAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:contentDescription="TODO"
             android:text="Account"
             android:textSize="24sp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
         <ImageView
+            android:contentDescription="imageProfile"
             android:id="@+id/profilePicture"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -31,13 +45,16 @@
             android:src="@drawable/account"/>
 
         <TextView
-            android:id="@+id/NameTV"
+            android:id="@+id/nameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:padding="15dp"
             android:layout_below="@id/profilePicture"
-            android:text="Name" />
+            android:text="Name"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_field_background"/>
 
         <TextView
             android:id="@+id/emailTV"
@@ -45,8 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:padding="15dp"
-            android:layout_below="@+id/NameTV"
-            android:text="Email Address" />
+            android:layout_below="@+id/nameTV"
+            android:text="Email Address"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_field_background"/>
 
         <TextView
             android:id="@+id/PhoneTV"
@@ -55,19 +75,27 @@
             android:layout_marginTop="15dp"
             android:padding="15dp"
             android:layout_below="@+id/emailTV"
-            android:text="Phone number" />
+            android:text="Phone number"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_field_background"/>
 
         <TextView
             android:id="@+id/AddressTV"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:padding="15dp"
             android:layout_below="@id/PhoneTV"
-            android:text="Address" />
+            android:text="Address"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_field_background" />
 
         <LinearLayout
             android:id="@+id/editProfileLayout"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_below="@id/AddressTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,19 +104,32 @@
 
             <Button
                 android:id="@+id/userProfileButton"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:text="Edit Profile">
+                android:text="Edit Profile"
+                android:background="@drawable/background_button"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:fontFamily="@font/open_sans_semibold">
             </Button>
 
             <Button
                 android:id="@+id/userDeliveryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="Your delivery">
+                android:text="Your delivery"
+                android:background="@drawable/background_button_white"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:fontFamily="@font/open_sans_semibold">
             </Button>
         </LinearLayout>
+
+
     </RelativeLayout>
 </FrameLayout>

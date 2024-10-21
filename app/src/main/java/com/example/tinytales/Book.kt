@@ -5,7 +5,8 @@ data class Book(
     val author: String = "",
     val category: String = "",
     val price: String = "",
-    val imageUrl: String = ""
+    val imageUrl: String = "",
+    val description: String = ""
 )
 
 data class CartItem(
@@ -18,20 +19,3 @@ data class CartItem(
     var documentId: String = "" // Thêm documentId để lưu ID của sách trong Firestore
 )
 
-
-
-//data class TopBook(
-//    val title: String = "",
-//    val author: String = "",
-//    val category: String = "",
-//    val price: String = "",
-//    val imageUrl: String = ""
-//)
-//
-//data class UpcomingBook(
-//    val title: String = "",
-//    val author: String = "",
-//    val category: String = "",
-//    val price: String = "",
-//    val imageUrl: String = ""
-//)
