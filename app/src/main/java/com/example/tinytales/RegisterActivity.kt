@@ -80,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun CreateUserAccount(){
-        //3. Tao tai khoan - Firebase Auth
+        //Tao tai khoan - Firebase Auth
 
         // Hien thi trang thai
         progressDialog.setMessage("Creating your account....")
@@ -100,26 +100,39 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun UpdateUserInfo(){
-        //4. Luu du lieu - Firebase Realtime Database
+    private fun UpdateUserInfo() {
+        // Hiển thị trạng thái lưu dữ liệu
         progressDialog.setMessage("Saving user info....")
 
-        val user = User(
-            email = binding.emailET.text.toString().trim(),
-            phone = binding.phoneET.text.toString().trim(),
-            password = binding.passwordET.text.toString().trim()
-        )
+        // Lấy UID của người dùng từ Firebase Authentication
+        val userId = firebaseAuth.currentUser?.uid
+        if (userId != null) {
+            // Tạo đối tượng người dùng
+            val user = User(
+                email = binding.emailET.text.toString().trim(),
+                phone = binding.phoneET.text.toString().trim(),
+                password = binding.passwordET.text.toString().trim()
+            )
 
-        val db = Firebase.firestore
-        db.collection("User")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                startActivity(Intent(this@RegisterActivity, DashbroadUserActivity::class.java))
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "Error adding user: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-
+            // Lưu dữ liệu người dùng vào Firestore, sử dụng UID làm document ID
+            val db = FirebaseFirestore.getInstance()
+            db.collection("User").document(userId)
+                .set(user)  // Sử dụng set() để ghi đè document với UID
+                .addOnSuccessListener {
+                    // Khi lưu thành công, chuyển hướng tới DashbroadUserActivity
+                    progressDialog.dismiss()
+                    startActivity(Intent(this@RegisterActivity, DashbroadUserActivity::class.java))
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    // Hiển thị lỗi nếu không thể lưu
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "Error saving user info: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            progressDialog.dismiss()
+            Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show()
+        }
     }
+
 }

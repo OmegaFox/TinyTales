@@ -24,6 +24,16 @@ class MainActivity : ComponentActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Kiểm tra SharedPreferences
+        val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val isRemembered = sharedPref.getBoolean("REMEMBER_ME", false)
+
+        // Nếu người dùng đã chọn "Remember Me", chuyển thẳng tới DashbroadUserActivity
+        if (isRemembered) {
+            startActivity(Intent(this, DashbroadUserActivity::class.java))
+            finish() // Đóng màn hình Login
+        }
+
         // handle click, login
         binding.loginButton.setOnClickListener {
             val gotoLogin = Intent(this, LoginActivity::class.java)

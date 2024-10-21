@@ -81,44 +81,59 @@ class LoginActivity : AppCompatActivity() {
             loginUser()
     }
 
-    private fun loginUser(){
-        // 3. login - firebase auth
-
-        // Hien thi trang thai
+    private fun loginUser() {
+        // Hiển thị trạng thái
         progressDialog.setMessage("Logging in....")
         progressDialog.show()
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
+                // Kiểm tra nếu người dùng chọn "Remember Me"
+                if (binding.checkBox.isChecked) {
+                    // Lưu UID vào SharedPreferences
+                    val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("USER_ID", firebaseAuth.currentUser?.uid)
+                    editor.putBoolean("REMEMBER_ME", true)
+                    editor.apply()
+                }
                 checkUser()
             }
-            .addOnFailureListener{ e->
+            .addOnFailureListener { e ->
                 progressDialog.dismiss()
                 Toast.makeText(this, "Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-
     }
 
-    private fun checkUser(){
-        /* 4. Check user type - firebase auth
-        */
 
+    private fun checkUser() {
+        // Hiển thị trạng thái
         progressDialog.setMessage("Checking User")
 
         val firebaseUser = firebaseAuth.currentUser!!
+        val userId = firebaseUser.uid
 
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
+        // Truy vấn Firestore với UID của người dùng
+        val db = FirebaseFirestore.getInstance()
+        db.collection("User").document(userId).get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    // Lấy thông tin người dùng từ Firestore
+                    val user = document.toObject(User::class.java)
                     progressDialog.dismiss()
+
+                    // Chuyển hướng tới DashbroadUserActivity
                     startActivity(Intent(this@LoginActivity, DashbroadUserActivity::class.java))
                     finish()
+                } else {
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "User not found in Firestore", Toast.LENGTH_SHORT).show()
                 }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "Error checking user: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
 }
