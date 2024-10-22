@@ -39,6 +39,13 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             }
         }
 
+        binding.userDeliveryButton.setOnClickListener {
+            // Tạo Intent để chuyển sang DeliveryActivity
+            val intent = Intent(requireActivity(), DeliveryActivity::class.java)
+            startActivity(intent)
+        }
+
+
         binding.logoutButton.setOnClickListener {
 
             logoutUser()

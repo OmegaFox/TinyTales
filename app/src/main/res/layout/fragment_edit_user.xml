@@ -121,7 +121,7 @@
             </Button>
 
             <Button
-                android:id="@+id/userDeliveryButton"
+                android:id="@+id/discardButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="5dp"

@@ -1,6 +1,7 @@
 package com.example.tinytales
 
 import android.app.AlertDialog
+import com.google.firebase.auth.EmailAuthProvider
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.tinytales.databinding.FragmentEditUserBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -40,6 +42,17 @@ class EditUserFragment : Fragment(R.layout.fragment_edit_user) {
         // Lưu dữ liệu mới khi nhấn nút Save
         binding.saveButton.setOnClickListener {
             saveUserData()
+        }
+
+        binding.changePasswordButton.setOnClickListener {
+            showChangePasswordDialog()
+        }
+
+        binding.discardButton.setOnClickListener {
+//            val intent = Intent(requireContext(), DashbroadUserActivity::class.java)
+//            intent.putExtra("open_cart", true)
+//            startActivity(intent)
+//            requireActivity().finish()
         }
 
         return binding.root
@@ -104,4 +117,54 @@ class EditUserFragment : Fragment(R.layout.fragment_edit_user) {
                 }
         }
     }
+
+    private fun showChangePasswordDialog() {
+        // Tạo một AlertDialog cho việc thay đổi mật khẩu
+        val dialogView = layoutInflater.inflate(R.layout.dialog_change_password, null)
+        val currentPasswordET = dialogView.findViewById<EditText>(R.id.currentPasswordET)
+        val newPasswordET = dialogView.findViewById<EditText>(R.id.newPasswordET)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Change Password")
+            .setView(dialogView)
+            .setPositiveButton("Change") { dialog, _ ->
+                val currentPassword = currentPasswordET.text.toString().trim()
+                val newPassword = newPasswordET.text.toString().trim()
+
+                if (currentPassword.isNotEmpty() && newPassword.isNotEmpty()) {
+                    changePassword(currentPassword, newPassword)
+                } else {
+                    Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    // Hàm xử lý thay đổi mật khẩu
+    private fun changePassword(currentPassword: String, newPassword: String) {
+        val user = auth.currentUser
+        if (user != null) {
+            val credential = EmailAuthProvider.getCredential(user.email!!, currentPassword)
+
+            // Reauthenticate user
+            user.reauthenticate(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Nếu xác thực thành công, thay đổi mật khẩu
+                        user.updatePassword(newPassword)
+                            .addOnCompleteListener { updateTask ->
+                                if (updateTask.isSuccessful) {
+                                    Toast.makeText(requireContext(), "Password changed successfully", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(requireContext(), "Password change failed: ${updateTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                    } else {
+                        Toast.makeText(requireContext(), "Re-authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
+
 }
