@@ -43,6 +43,8 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
             if (validatePayment()) {
                 saveCartToFirestore()
             }
+            val intent = Intent(requireActivity(), PaymentReceivedActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root
@@ -56,7 +58,7 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
                         currentAddress = document.getString("address") ?: "No address available"
-                        userPhoneNumber = document.getString("phoneNumber") ?: "No phone number available"
+                        userPhoneNumber = document.getString("phone") ?: "No phone number available"
                         binding.AddressTV.text = currentAddress
                     }
                 }
