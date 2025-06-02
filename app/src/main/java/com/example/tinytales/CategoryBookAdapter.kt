@@ -1,6 +1,7 @@
 package com.example.tinytales
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,8 @@ class CategoryBookAdapter(private var books: List<Book>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val book = books[position]
         holder.bind(book) { selectedBook ->
+
+
             // Chuyển dữ liệu sang BookDetailActivity khi sách được click
             val context = holder.itemView.context
             val intent = Intent(context, BookDetailActivity::class.java).apply {
@@ -43,7 +46,8 @@ class CategoryBookAdapter(private var books: List<Book>) : RecyclerView.Adapter<
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-//                putExtra("description", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.descriptionBook)
+                putExtra("rate", selectedBook.rate)
             }
             context.startActivity(intent)
         }

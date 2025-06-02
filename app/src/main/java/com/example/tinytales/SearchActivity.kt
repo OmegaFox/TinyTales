@@ -61,7 +61,7 @@ class SearchActivity : AppCompatActivity() {
     private fun performSearch(queryText: String) {
         val lowerCaseQuery = queryText.toUpperCase()
 
-        firestore.collection("TopBook")
+        firestore.collection("Book")
             .orderBy("title")
             .startAt(lowerCaseQuery)
             .endAt(queryText + "\uf8ff")

@@ -62,11 +62,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 // Chuyển kết quả query Firestore thành danh sách Book
                 val bookList = result.toObjects(Book::class.java)
 
-//                // In dữ liệu vào log để kiểm tra
-//                for (book in bookList) {
-//                    // In ra thông tin của mỗi cuốn sách
-//                    android.util.Log.d("FirestoreData", "Title: ${book.title}, Author: ${book.author}, Price: ${book.price}")
-//                }
 
                 // Khởi tạo Adapter và set dữ liệu vào RecyclerView
                 topBooksAdapter = TopBooksAdapter(bookList)

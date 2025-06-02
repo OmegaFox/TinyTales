@@ -108,8 +108,8 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         val shipping = subtotal * 0.02
         val total = subtotal + shipping
 
-        binding.SubPrice.text = "%.2f".format(subtotal)
-        binding.shipPrice.text = "%.2f".format(shipping)
-        binding.TotalPrice.text = "%.2f".format(total)
+        binding.SubPrice.text = "%.3f VND".format(subtotal)
+        binding.shipPrice.text = "%.3f VND".format(shipping)
+        binding.TotalPrice.text = "%.3f VND".format(total)
     }
 }

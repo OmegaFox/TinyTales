@@ -28,10 +28,9 @@ class MainActivity : ComponentActivity() {
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val isRemembered = sharedPref.getBoolean("REMEMBER_ME", false)
 
-        // Nếu người dùng đã chọn "Remember Me", chuyển thẳng tới DashbroadUserActivity
         if (isRemembered) {
             startActivity(Intent(this, DashbroadUserActivity::class.java))
-            finish() // Đóng màn hình Login
+            finish()
         }
 
         // handle click, login

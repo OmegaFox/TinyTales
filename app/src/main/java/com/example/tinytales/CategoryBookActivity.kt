@@ -36,6 +36,10 @@ class CategoryBookActivity : AppCompatActivity() {
 
         // Lấy sách theo thể loại từ Firestore
         fetchBooksByCategory(category!!)
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun fetchBooksByCategory(category: String) {

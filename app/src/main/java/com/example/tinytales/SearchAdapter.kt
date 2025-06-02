@@ -16,6 +16,7 @@ class SearchAdapter(private var books: List<Book>) : RecyclerView.Adapter<Search
             binding.categoryBook.text = book.category
             binding.priceBook.text = book.price
 
+
             // load image using Glide
             Glide.with(binding.imageBook.context)
                 .load(book.imageUrl)
@@ -47,7 +48,8 @@ class SearchAdapter(private var books: List<Book>) : RecyclerView.Adapter<Search
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-//                putExtra("description", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.descriptionBook)
+                putExtra("rate", selectedBook.rate)
             }
             context.startActivity(intent)
         }

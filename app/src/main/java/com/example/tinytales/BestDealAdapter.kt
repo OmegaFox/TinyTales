@@ -51,7 +51,8 @@ class BestDealAdapter(private val books: List<Book>) : RecyclerView.Adapter<Best
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-                putExtra("descriptionBook", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.descriptionBook)
+                putExtra("rate" , selectedBook.rate)
             }
             context.startActivity(intent)
         }

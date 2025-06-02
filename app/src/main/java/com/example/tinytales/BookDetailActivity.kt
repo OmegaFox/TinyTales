@@ -1,5 +1,6 @@
 package com.example.tinytales
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,7 +21,6 @@ class BookDetailActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookDetailBinding.inflate(layoutInflater)
@@ -31,6 +31,7 @@ class BookDetailActivity : AppCompatActivity() {
 
         // Lấy dữ liệu sách từ Intent
         val title = intent.getStringExtra("title")
+        val rate = intent.getStringExtra("rate")
         val author = intent.getStringExtra("author")
         val category = intent.getStringExtra("category")
         val price = intent.getStringExtra("price")
@@ -38,13 +39,13 @@ class BookDetailActivity : AppCompatActivity() {
         val description = intent.getStringExtra("descriptionBook")
         findViewById<TextView>(R.id.descriptionBook).text = description ?: "No description available"
 
-
         // Hiển thị dữ liệu sách lên giao diện
         binding.titleBook.text = title
         binding.authorBook.text = "Author: $author"
         binding.categoryBook.text = "Category: $category"
-        binding.priceBook.text = "Price: $price"
-        binding.descriptionBook.text = description
+        binding.priceBook.text = "Price: $price VND"
+        binding.ratingBook.text = "Rating: $rate"
+        binding.descriptionBook.text = "$description"
 
         // Load hình ảnh sử dụng Glide
         Glide.with(this)
@@ -60,43 +61,91 @@ class BookDetailActivity : AppCompatActivity() {
         binding.cartButton.setOnClickListener {
             val intent = Intent(this, DashbroadUserActivity::class.java)
             intent.putExtra("open_cart", true)
-
             startActivity(intent)
             finish()
         }
 
-        // Nút "Add to Cart"
+        // Nút "Add to Cart" với kiểm tra đăng nhập
         binding.addToCartButton.setOnClickListener {
-            addToCart(title!!, author!!, price!!, imageUrl!!)
+            if (isUserLoggedIn()) {
+                // Người dùng đã đăng nhập, thêm vào giỏ hàng
+                addToCart(title!!, author!!, price!!, imageUrl!!)
+            } else {
+                // Người dùng chưa đăng nhập, hiển thị hộp thoại
+                showLoginDialog()
+            }
         }
     }
 
-    // Thêm sách vào giỏ hàng và lưu vào Firestore
-    private fun addToCart(title: String, author: String, price: String, imageUrl: String) {
-        val userId = auth.currentUser?.uid ?: "guest"  // Lấy userId nếu có, nếu không thì để là "guest"
-        val cartItem = hashMapOf(
-            "title" to title,
-            "author" to author,
-            "price" to price,
-            "imageUrl" to imageUrl,
-            "userId" to userId,
-            "quantity" to 1,
-            "documentId" to ""
-        )
-
-        // Lưu sách vào collection "cart_items"
-        firestore.collection("cart_items")
-            .add(cartItem)
-            .addOnSuccessListener {
-                // Hiển thị thông báo khi thêm thành công
-                Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show()
-
-            }
-            .addOnFailureListener { e ->
-                // Xử lý lỗi
-                Toast.makeText(this,"Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show()
-            }
+    // Kiểm tra người dùng đã đăng nhập chưa
+    private fun isUserLoggedIn(): Boolean {
+        return auth.currentUser != null
     }
 
+    // Hiển thị hộp thoại yêu cầu đăng nhập
+    private fun showLoginDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Login required")
+            .setMessage("You need to login to add products to cart. Do you want to login?")
+            .setPositiveButton("Login") { _, _ ->
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton("Sign up") { _, _ ->
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+            }
+            .setNeutralButton("Cancel", null)
+            .setCancelable(true)
+            .show()
+    }
 
+    // Thêm sách vào giỏ hàng và lưu vào Firestore (chỉ khi đã đăng nhập)
+    private fun addToCart(title: String, author: String, price: String, imageUrl: String) {
+        val userId = auth.currentUser?.uid ?: return // Không thêm nếu không có userId
+
+        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+        firestore.collection("cart_items")
+            .whereEqualTo("userId", userId)
+            .whereEqualTo("title", title)
+            .get()
+            .addOnSuccessListener { result ->
+                if (result.isEmpty) {
+                    // Sản phẩm chưa có trong giỏ hàng, thêm mới
+                    val cartItem = hashMapOf(
+                        "title" to title,
+                        "author" to author,
+                        "price" to price,
+                        "imageUrl" to imageUrl,
+                        "userId" to userId,
+                        "quantity" to 1,
+                        "documentId" to ""
+                    )
+
+                    firestore.collection("cart_items")
+                        .add(cartItem)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(this, "Add to cart failed", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    // Sản phẩm đã có trong giỏ hàng, tăng số lượng
+                    val document = result.documents[0]
+                    val currentQuantity = document.getLong("quantity")?.toInt() ?: 1
+
+                    document.reference.update("quantity", currentQuantity + 1)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Quantity in cart updated", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Error updating cart", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error while checking cart", Toast.LENGTH_SHORT).show()
+            }
+    }
 }

@@ -15,6 +15,7 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
 
     class BookViewHolder(private val binding: TopBookRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book, onItemClicked: (Book) -> Unit) {
+
             // Gán dữ liệu cho các view
             binding.titleBook.text = book.title
             binding.authorBook.text = book.author
@@ -50,7 +51,8 @@ class TopBooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<TopB
                 putExtra("category", selectedBook.category)
                 putExtra("price", selectedBook.price)
                 putExtra("imageUrl", selectedBook.imageUrl)
-                putExtra("descriptionBook", selectedBook.description) // nếu bạn có thêm thông tin miêu tả
+                putExtra("descriptionBook", selectedBook.descriptionBook)
+                putExtra("rate" , selectedBook.rate)
             }
 
             context.startActivity(intent)

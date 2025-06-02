@@ -156,7 +156,7 @@
                 android:text="This is the book description."
                 android:textColor="@color/black"
                 android:fontFamily="@font/open_sans"
-                android:gravity="center"
+                android:gravity="left"
                 android:justificationMode="inter_word"/>
         </LinearLayout>
     </ScrollView>
