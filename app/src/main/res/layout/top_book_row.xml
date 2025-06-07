@@ -54,6 +54,7 @@
             android:textSize="16sp"
             android:textColor="@color/white"
             android:fontFamily="@font/open_sans"
+            android:maxLines="1"
             android:text="Title">
         </TextView>
 

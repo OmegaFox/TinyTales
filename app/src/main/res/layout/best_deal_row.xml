@@ -37,7 +37,6 @@
             android:text="Category">
         </TextView>
 
-
         <TextView
             android:id="@+id/titleBook"
             android:layout_width="match_parent"
@@ -48,6 +47,7 @@
             android:layout_toEndOf="@+id/imageBook"
             android:layout_below="@+id/categoryBook"
             android:textColor="@color/white"
+            android:maxLines="1"
             android:text="Title">
         </TextView>
 
@@ -66,7 +66,7 @@
 
         <TextView
             android:id="@+id/priceBook"
-
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/imageBook"
